@@ -16,7 +16,7 @@ public class WelcomeView extends Stage {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         this.setScene(scene);
-        this.setTitle("TypeBeat");
+        this.setTitle("Sudoku 6x6");
         this.getIcons().add(new Image(
                 getClass().getResourceAsStream("/project/sudoku/images/sudokuLogo.png")
         ));
