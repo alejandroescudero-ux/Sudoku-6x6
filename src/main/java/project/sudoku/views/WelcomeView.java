@@ -11,12 +11,12 @@ import java.io.IOException;
 public class WelcomeView extends Stage {
     public WelcomeView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/project/sudoku/sudokuMain.fxml")
+                getClass().getResource("/project/sudoku/sudokuMenu.fxml")
         );
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         this.setScene(scene);
-        this.setTitle("Sudoku 6x6");
+        this.setTitle("Sudoku 6x6: No se me ocurrieron titulos random");
         this.getIcons().add(new Image(
                 getClass().getResourceAsStream("/project/sudoku/images/sudokuLogo.png")
         ));
