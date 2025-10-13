@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import project.sudoku.models.SudokuModel;
@@ -174,6 +175,15 @@ public class SudokuMainController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(play);
         stage.show();
+    }
+
+    @FXML
+    public void infobutton(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Instrucciones");
+        alert.setHeaderText("Este es un Sudoku 6x6");
+        alert.setContentText("Tu objetivo es llenar cada cuadro sin repetir numero en cuadrante, fila y columna");
+        alert.showAndWait();
     }
 
 }
