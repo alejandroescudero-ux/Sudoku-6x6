@@ -140,7 +140,7 @@
                         <Font name="Berlin Sans FB" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #BE8AFF;" text="Reiniciar" textFill="#4900a3">
+                <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartbutton" style="-fx-background-color: #BE8AFF;" text="Reiniciar" textFill="#4900a3">
                     <font>
                         <Font name="Berlin Sans FB" size="15.0" />
                     </font>
