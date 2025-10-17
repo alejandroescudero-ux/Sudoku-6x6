@@ -18,7 +18,7 @@
     <children>
       <HBox prefHeight="0.0" prefWidth="600.0" style="-fx-padding: 10;">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backbutton" style="-fx-background-color: #7700FF;" text="Volver" textFill="#370075">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" style="-fx-background-color: #7700FF;" text="Volver" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -26,7 +26,7 @@
       </HBox>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0" style="-fx-spacing: 100;">
             <children>
-            <Label text="Hexadoku">
+            <Label text="MiniDoku">
                <font>
                   <Font name="Berlin Sans FB" size="38.0" />
                </font>
@@ -40,7 +40,7 @@
                         </Stop>
                         <Stop offset="1.0">
                            <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
+                              <Color red="0.4166666567325592" blue="1.0" />
                            </color>
                         </Stop>
                      </stops>
@@ -49,12 +49,12 @@
             </Label>
                 <HBox alignment="CENTER" prefHeight="70.0" prefWidth="138.0" style="-fx-spacing: 5;">
                     <children>
-                        <Label text="Como jugar" textFill="#000047">
+                        <Label text="Pista" textFill="#000047">
                             <font>
                                 <Font name="Berlin Sans FB" size="20.0" />
                             </font>
                         </Label>
-                        <Button fx:id="infoButton" mnemonicParsing="false" onAction="#infobutton" prefWidth="32.0" style="-fx-background-color: #958AFF; -fx-border-radius: 100;" text="?" textFill="#000047">
+                        <Button fx:id="hintButton" mnemonicParsing="false" onAction="#hintButton" prefWidth="32.0" style="-fx-background-color: #4900a3; -fx-border-radius: 100;" text="?" textFill="WHITE">
                             <font>
                                 <Font name="Berlin Sans FB" size="18.0" />
                             </font>
@@ -63,7 +63,7 @@
                 </HBox>
             </children>
         </HBox>
-        <GridPane fx:id="sudokuGrid" alignment="CENTER" gridLinesVisible="true" style="-fx-border-color: black; -fx-border-width: 2px; -fx-background-color: #B8BBFF;">
+        <GridPane fx:id="sudokuGrid" alignment="CENTER" gridLinesVisible="true">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -135,14 +135,14 @@
         </GridPane>
         <HBox alignment="CENTER" prefHeight="39.0" prefWidth="600.0" style="-fx-spacing: 100; -fx-padding: 10;">
             <children>
-                <Button fx:id="hintButton" mnemonicParsing="false" style="-fx-background-color: #8AAFFF;" text="Pista" textFill="#0034a3">
-                    <font>
-                        <Font name="Berlin Sans FB" size="16.0" />
-                    </font>
-                </Button>
-                <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartbutton" style="-fx-background-color: #BE8AFF;" text="Reiniciar" textFill="#4900a3">
+                <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartbutton" style="-fx-background-color: #4900a3;" text="Reiniciar" textFill="WHITE">
                     <font>
                         <Font name="Berlin Sans FB" size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="ValidateButton" mnemonicParsing="false" onAction="#onVerify" style="-fx-background-color: #0055ff;" text="Validar" textFill="WHITE">
+                    <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
                     </font>
                 </Button>
             </children>

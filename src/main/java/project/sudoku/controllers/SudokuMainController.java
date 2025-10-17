@@ -2,16 +2,14 @@ package project.sudoku.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import project.sudoku.models.AlertBox;
 import project.sudoku.models.Celda;
-import javafx.scene.Node;
+import project.sudoku.models.IAlertBox;
+import project.sudoku.views.WelcomeView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +19,13 @@ import java.util.Random;
 
 public class SudokuMainController {
 
+    @FXML
+    private Button hintButton;
+
+    @FXML
+    void hintButton(ActionEvent event) {
+
+    }
     @FXML
     private GridPane sudokuGrid;
 
@@ -75,7 +80,7 @@ public class SudokuMainController {
                 int valorPermutado = permutacion[valorOriginal - 1];
 
                 // 55% de probabilidad de dejar la celda vacía
-                if (random.nextDouble() < 0.55) {
+                if (random.nextDouble() < 0.25) {
                     listaCeldas.add(new Celda(fila, columna, 0));
                 } else {
                     listaCeldas.add(new Celda(fila, columna, valorPermutado));
@@ -113,32 +118,128 @@ public class SudokuMainController {
         cargarPlantillaDesdeLista();
     }
 
-    // Muestra las instrucciones del juego
-    @FXML
-    public void infobutton(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Instrucciones");
-        alert.setHeaderText("Este es un Sudoku 6x6");
-        alert.setContentText("Tu objetivo es llenar los espacios en blanco (del 1 al 6) sin repetir numero en el cuadrante, columna y fila");
-        alert.showAndWait();
-    }
-
     // Regresa al menú principal
     @FXML
-    public void backbutton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/sudoku/sudokuMenu.fxml"));
-        Scene play = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(play);
-        stage.show();
+    void onExitButton(ActionEvent event) {
+        Stage currentStage = (Stage) exitButton.getScene().getWindow();
+        currentStage.close();
+        try {
+            WelcomeView welcomeView = new WelcomeView();
+            welcomeView.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
+    @FXML
+    private Button exitButton;
     // Genera otra plantilla
     @FXML
     public void restartbutton(ActionEvent event) throws IOException {
         reiniciarTablero();
     }
+    @FXML
+    void onVerify(ActionEvent event) {
+        IAlertBox alertBox = new AlertBox();
+
+        if (!tableroCompleto()) {
+            alertBox.showWarningAlertBox(
+                    "Sudoku Incompleto",
+                    "Aún quedan celdas vacías. Llena todas las casillas antes de verificar.",
+                    "Tablero incompleto"
+            );
+            return;
+        }
+
+        if (validarTablero()) {
+            alertBox.showAlertBox(
+                    "¡Felicidades!",
+                    "Has completado correctamente el Sudoku.",
+                    "Juego Terminado"
+            );
+        } else {
+            alertBox.showWarningAlertBox(
+                    "Sudoku Incorrecto",
+                    "Algunas celdas tienen valores repetidos o inválidos. Intenta corregirlos.",
+                    "Verifica tu solución"
+            );
+        }
+    }
+
+    // Comprueba si todas las celdas están llenas
+    private boolean tableroCompleto() {
+        for (int fila = 0; fila < 6; fila++) {
+            for (int columna = 0; columna < 6; columna++) {
+                String texto = celdas[fila][columna].getText().trim();
+                if (texto.isEmpty()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // Valida que todas las reglas del sudoku se cumplan
+    private boolean validarTablero() {
+        for (int fila = 0; fila < 6; fila++) {
+            for (int columna = 0; columna < 6; columna++) {
+                String texto = celdas[fila][columna].getText().trim();
+                if (texto.isEmpty()) continue;
+
+                try {
+                    int valor = Integer.parseInt(texto);
+                    if (valor < 1 || valor > 6) {
+                        return false;
+                    }
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+
+                if (!esValido(fila, columna)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // Verifica que un valor no se repita en fila, columna o cuadrante 2x3
+    private boolean esValido(int fila, int columna) {
+        String texto = celdas[fila][columna].getText().trim();
+        if (texto.isEmpty()) return true;
+        int valor = Integer.parseInt(texto);
+
+        // Validar fila
+        for (int j = 0; j < 6; j++) {
+            if (j != columna && celdas[fila][j].getText().trim().equals(texto)) {
+                return false;
+            }
+        }
+
+        // Validar columna
+        for (int i = 0; i < 6; i++) {
+            if (i != fila && celdas[i][columna].getText().trim().equals(texto)) {
+                return false;
+            }
+        }
+
+        // Validar subcuadrante (2x3)
+        int inicioFila = (fila / 2) * 2;
+        int inicioColumna = (columna / 3) * 3;
+
+        for (int i = inicioFila; i < inicioFila + 2; i++) {
+            for (int j = inicioColumna; j < inicioColumna + 3; j++) {
+                if ((i != fila || j != columna) &&
+                        celdas[i][j].getText().trim().equals(texto)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
+
+
 
 
 
