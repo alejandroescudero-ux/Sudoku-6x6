@@ -2,22 +2,21 @@ package project.sudoku.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import project.sudoku.views.WelcomeView;
+import project.sudoku.views.MenuView;
 import java.io.IOException;
 
 public class SudokuMenuController {
 
     @FXML
-    public void playButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(WelcomeView.class.getResource("/project/sudoku/sudokuMain.fxml"));
-        Scene play = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(play);
-        stage.show();
+    public void playButton(ActionEvent event) {
+        try {
+            MenuView menuView = MenuView.getInstance();
+            menuView.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -25,4 +24,3 @@ public class SudokuMenuController {
         System.exit(0);
     }
 }
-

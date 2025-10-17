@@ -8,32 +8,32 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WelcomeView extends Stage {
-    public WelcomeView() throws IOException {
+public class MenuView extends Stage {
+    public MenuView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/project/sudoku/sudokuMenu.fxml")
+                getClass().getResource("/project/sudoku/sudokuMain.fxml")
         );
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         this.setScene(scene);
-        this.setTitle("MiniDoku: el reto 6x6");
+        this.setTitle("MiniDoku: en juego");
         this.getIcons().add(new Image(
                 getClass().getResourceAsStream("/project/sudoku/images/sudokuLogo.png")
         ));
     }
 
-    public static WelcomeView getInstance() throws IOException {
-        if (WelcomeView.WelcomeViewHolder.INSTANCE == null) {
-            WelcomeView.WelcomeViewHolder.INSTANCE = new WelcomeView();
+    public static MenuView getInstance() throws IOException {
+        if (MenuViewHolder.INSTANCE == null) {
+            MenuViewHolder.INSTANCE = new MenuView();
         }
-        return WelcomeView.WelcomeViewHolder.INSTANCE;
+        return MenuViewHolder.INSTANCE;
     }
 
     /**
      * Clase estática interna que implementa el patrón Holder
-     * para almacenar la instancia única de @link WelcomeView
+     * para almacenar la instancia única de @link MenuView
      */
-    private static class WelcomeViewHolder {
-        private static WelcomeView INSTANCE = null;
+    private static class MenuViewHolder {
+        private static MenuView INSTANCE = null;
     }
 }
