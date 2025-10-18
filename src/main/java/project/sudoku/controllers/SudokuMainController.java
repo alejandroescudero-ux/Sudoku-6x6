@@ -105,7 +105,7 @@ public class SudokuMainController {
                 int valorPermutado = permutacion[valorOriginal - 1];
 
                 // 55% de probabilidad de dejar la celda vacía
-                if (random.nextDouble() < 0.25) {
+                if (random.nextDouble() < 0.65) {
                     listaCeldas.add(new Celda(fila, columna, 0));
                 } else {
                     listaCeldas.add(new Celda(fila, columna, valorPermutado));
