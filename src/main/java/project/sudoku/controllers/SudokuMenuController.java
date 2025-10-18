@@ -9,7 +9,21 @@ import project.sudoku.models.IAlertBox;
 import project.sudoku.views.MenuView;
 import java.io.IOException;
 
+/**
+ * Controller class for the Sudoku menu view.
+ * This class manages the menu interactions such as starting the game,
+ * showing instructions, and exiting the application.
+ */
+
 public class SudokuMenuController {
+
+    /**
+     * Handles the action when the "Play" button is clicked.
+     * Opens the game menu view and closes the current window.
+     *
+     * @param event the {@link ActionEvent} triggered by clicking the Play button
+     * @throws IOException if the FXML file for the next view cannot be loaded
+     */
 
     @FXML
     public void playButton(ActionEvent event) throws IOException {
@@ -21,7 +35,12 @@ public class SudokuMenuController {
         stage.close();
     }
 
-    // Muestra las instrucciones del juego
+    /**
+     * Displays an informational alert with the game instructions.
+     *
+     * @param event the {@link ActionEvent} triggered by clicking the Info button
+     */
+
     public void infobutton(ActionEvent event) {
         IAlertBox alertBox = new AlertBox();
         alertBox.showAlertBox(
@@ -30,6 +49,10 @@ public class SudokuMenuController {
                 "Este es un Sudoku 6x6"
         );
     }
+
+    /**
+     * Closes the application when the "Quit" button is clicked.
+     */
 
     @FXML
     private void quitButton() {
