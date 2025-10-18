@@ -1,0 +1,129 @@
+.bg-home {
+    -fx-background-image: url("../images/backgroundImage.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.bg-secondary {
+    -fx-background-color: #232948;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Textos ===== */
+.label {
+    -fx-text-fill: #e2eaf7;
+    -fx-font-size: 14px;
+}
+
+.title {
+    -fx-text-fill: #f2f6fc;
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+}
+
+/* ==============================
+   🎯 BOTONES (redondeados)
+   ============================== */
+
+/* 🔵 BOTÓN PRINCIPAL */
+.button-primary {
+    -fx-background-color: linear-gradient(to bottom, #5f86d2, #415ab4);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0.3, 0, 3);
+    -fx-transition: all 0.25s ease-in-out;
+}
+
+.button-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #7da4dd, #4769c4);
+    -fx-translate-y: -2;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #334175;
+    -fx-translate-y: 0;
+}
+
+/* ⚪ BOTÓN SECUNDARIO */
+.button-secondary {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-text-fill: #cbdaf2;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-border-color: #7da4dd;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+    -fx-transition: all 0.25s ease-in-out;
+}
+
+.button-secondary:hover {
+    -fx-background-color: rgba(125,164,221,0.15);
+    -fx-border-color: #a7c3e9;
+    -fx-text-fill: #f2f6fc;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button-secondary:pressed {
+    -fx-background-color: rgba(125,164,221,0.3);
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+}
+
+/* 🔴 BOTÓN DE ALERTA / PELIGRO */
+.button-danger {
+    -fx-background-color: linear-gradient(to bottom, #ff5c5c, #b83232);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+    -fx-border-color: #ff8080;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0.3, 0, 3);
+    -fx-transition: all 0.25s ease-in-out;
+}
+
+.button-danger:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff6e6e, #cc3d3d);
+    -fx-border-color: #ff9e9e;
+    -fx-translate-y: -2;
+}
+
+.button-danger:pressed {
+    -fx-background-color: #8a2a2a;
+    -fx-translate-y: 0;
+}
+
+.sudoku-cell {
+    -fx-font-size: 20px; /* 🔠 Fuente más grande */
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+    -fx-text-alignment: center;
+    -fx-alignment: center; /* 🔹 Centra el texto vertical y horizontalmente */
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #232948; /* Color del número */
+}
+
+/* Efecto al hacer foco */
+.sudoku-cell:focused {
+    -fx-border-color: #0078d7;
+    -fx-border-width: 2px;
+    -fx-background-color: #f9f9ff;
+}

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import project.sudoku.models.AlertBox;
 import project.sudoku.models.Celda;
@@ -51,15 +52,39 @@ public class SudokuMainController {
 
     //Crea los TextArea del tablero y los añade al GridPane
     private void mapearCeldasDesdeFXML() {
+        sudokuGrid.getChildren().clear();
+        sudokuGrid.getColumnConstraints().clear();
+        sudokuGrid.getRowConstraints().clear();
+
+        for (int i = 0; i < 6; i++) {
+            sudokuGrid.getColumnConstraints().add(new javafx.scene.layout.ColumnConstraints(55));
+            sudokuGrid.getRowConstraints().add(new javafx.scene.layout.RowConstraints(55));
+        }
+
         for (int fila = 0; fila < 6; fila++) {
             for (int columna = 0; columna < 6; columna++) {
                 TextArea textArea = new TextArea();
-                textArea.setPrefSize(50, 50);
-                textArea.setStyle("-fx-font-size: 16px; -fx-alignment: center; -fx-text-alignment: center;");
+                textArea.setWrapText(false);
+                textArea.setPrefWidth(55);
+                textArea.setPrefHeight(55);
+                textArea.setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+                textArea.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+
+                textArea.getStyleClass().add("sudoku-cell"); // ✅ CSS
+
+                textArea.textProperty().addListener((obs, oldValue, newValue) -> {
+                    if (!newValue.matches("[1-6]?")) {
+                        textArea.setText(oldValue);
+                    }
+                });
+
                 sudokuGrid.add(textArea, columna, fila);
                 celdas[fila][columna] = textArea;
             }
         }
+
+        sudokuGrid.setHgap(5);
+        sudokuGrid.setVgap(5);
     }
 
     // Genera una plantilla aleatoria usando una permutación de números y posiciones vacías
@@ -101,11 +126,9 @@ public class SudokuMainController {
                 if (valor != 0) {
                     textArea.setText(String.valueOf(valor));
                     textArea.setEditable(false);
-                    textArea.setStyle("-fx-control-inner-background: #93c0ff; -fx-font-weight: bold; -fx-text-fill: #002d7e;");
                 } else {
                     textArea.clear();
                     textArea.setEditable(true);
-                    textArea.setStyle("");
                 }
             }
         }

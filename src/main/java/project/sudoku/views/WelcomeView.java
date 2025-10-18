@@ -15,6 +15,11 @@ public class WelcomeView extends Stage {
         );
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+
+        scene.getStylesheets().add(
+                getClass().getResource("/project/sudoku/styles/style.css").toExternalForm()
+        );
+
         this.setScene(scene);
         this.setTitle("MiniDoku: el reto 6x6");
         this.getIcons().add(new Image(

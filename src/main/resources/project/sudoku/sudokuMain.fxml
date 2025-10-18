@@ -9,61 +9,33 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="30.0" style="-fx-spacing: 2; -fx-background-color: #B8BBFF;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sudoku.controllers.SudokuMainController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0" styleClass="bg-secondary" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sudoku.controllers.SudokuMainController">
     <children>
-      <HBox prefHeight="0.0" prefWidth="600.0" style="-fx-padding: 10;">
+      <HBox>
          <children>
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" style="-fx-background-color: #7700FF;" text="Volver" textFill="WHITE">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" styleClass="button-danger" text="Volver" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
       </HBox>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0" style="-fx-spacing: 100;">
             <children>
-            <Label text="MiniDoku">
-               <font>
-                  <Font name="Berlin Sans FB" size="38.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5545023696682465">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color green="0.18333333730697632" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.4166666567325592" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-                <HBox alignment="CENTER" prefHeight="70.0" prefWidth="138.0" style="-fx-spacing: 5;">
-                    <children>
-                        <Label text="Pista" textFill="#000047">
-                            <font>
-                                <Font name="Berlin Sans FB" size="20.0" />
-                            </font>
-                        </Label>
-                        <Button fx:id="hintButton" mnemonicParsing="false" onAction="#hintButton" prefWidth="32.0" style="-fx-background-color: #4900a3; -fx-border-radius: 100;" text="?" textFill="WHITE">
-                            <font>
-                                <Font name="Berlin Sans FB" size="18.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </HBox>
+            <Label styleClass="title" text="MiniDoku" />
             </children>
         </HBox>
-        <GridPane fx:id="sudokuGrid" alignment="CENTER" gridLinesVisible="true">
+        <GridPane fx:id="sudokuGrid" alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -81,66 +53,66 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <VBox.margin>
-                <Insets left="40.0" right="40.0" />
+                <Insets />
             </VBox.margin>
             <children>
                 <!-- Fila 0 -->
-                <TextArea fx:id="cell_0_0" prefHeight="200.0" prefWidth="200.0" />
-                <TextArea fx:id="cell_0_1" layoutX="12.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                <TextArea fx:id="cell_0_2" layoutX="98.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-                <TextArea fx:id="cell_0_3" layoutX="184.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
-                <TextArea fx:id="cell_0_4" layoutX="270.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" />
-                <TextArea fx:id="cell_0_5" layoutX="356.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" />
+                <TextArea fx:id="cell_0_0" />
+                <TextArea fx:id="cell_0_1" layoutX="12.0" layoutY="8.0" GridPane.columnIndex="1" />
+                <TextArea fx:id="cell_0_2" layoutX="98.0" layoutY="8.0" GridPane.columnIndex="2" />
+                <TextArea fx:id="cell_0_3" layoutX="184.0" layoutY="8.0" GridPane.columnIndex="3" />
+                <TextArea fx:id="cell_0_4" layoutX="270.0" layoutY="8.0" GridPane.columnIndex="4" />
+                <TextArea fx:id="cell_0_5" layoutX="356.0" layoutY="8.0" GridPane.columnIndex="5" />
 
                 <!-- Fila 1 -->
-                <TextArea fx:id="cell_1_0" layoutX="442.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                <TextArea fx:id="cell_1_1" layoutX="12.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextArea fx:id="cell_1_2" layoutX="12.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <TextArea fx:id="cell_1_3" layoutX="184.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                <TextArea fx:id="cell_1_4" layoutX="270.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                <TextArea fx:id="cell_1_5" layoutX="356.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                <TextArea fx:id="cell_1_0" layoutX="442.0" layoutY="8.0" GridPane.rowIndex="1" />
+                <TextArea fx:id="cell_1_1" layoutX="12.0" layoutY="38.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextArea fx:id="cell_1_2" layoutX="12.0" layoutY="38.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextArea fx:id="cell_1_3" layoutX="184.0" layoutY="38.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <TextArea fx:id="cell_1_4" layoutX="270.0" layoutY="38.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <TextArea fx:id="cell_1_5" layoutX="356.0" layoutY="38.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
 
                 <!-- Fila 2 -->
-                <TextArea fx:id="cell_2_0" layoutX="442.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
-                <TextArea fx:id="cell_2_1" layoutX="12.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextArea fx:id="cell_2_2" layoutX="98.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <TextArea fx:id="cell_2_3" layoutX="184.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                <TextArea fx:id="cell_2_4" layoutX="270.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                <TextArea fx:id="cell_2_5" layoutX="356.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                <TextArea fx:id="cell_2_0" layoutX="442.0" layoutY="38.0" GridPane.rowIndex="2" />
+                <TextArea fx:id="cell_2_1" layoutX="12.0" layoutY="68.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextArea fx:id="cell_2_2" layoutX="98.0" layoutY="68.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <TextArea fx:id="cell_2_3" layoutX="184.0" layoutY="68.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                <TextArea fx:id="cell_2_4" layoutX="270.0" layoutY="68.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                <TextArea fx:id="cell_2_5" layoutX="356.0" layoutY="68.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
 
                 <!-- Fila 3 -->
-                <TextArea fx:id="cell_3_0" layoutX="442.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
-                <TextArea fx:id="cell_3_1" layoutX="12.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextArea fx:id="cell_3_2" layoutX="98.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                <TextArea fx:id="cell_3_3" layoutX="184.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                <TextArea fx:id="cell_3_4" layoutX="270.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                <TextArea fx:id="cell_3_5" layoutX="356.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                <TextArea fx:id="cell_3_0" layoutX="442.0" layoutY="68.0" GridPane.rowIndex="3" />
+                <TextArea fx:id="cell_3_1" layoutX="12.0" layoutY="98.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextArea fx:id="cell_3_2" layoutX="98.0" layoutY="98.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                <TextArea fx:id="cell_3_3" layoutX="184.0" layoutY="98.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                <TextArea fx:id="cell_3_4" layoutX="270.0" layoutY="98.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                <TextArea fx:id="cell_3_5" layoutX="356.0" layoutY="98.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
 
                 <!-- Fila 4 -->
-                <TextArea fx:id="cell_4_0" layoutX="442.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4" />
-                <TextArea fx:id="cell_4_1" layoutX="12.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <TextArea fx:id="cell_4_2" layoutX="98.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                <TextArea fx:id="cell_4_3" layoutX="184.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                <TextArea fx:id="cell_4_4" layoutX="270.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                <TextArea fx:id="cell_4_5" layoutX="356.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                <TextArea fx:id="cell_4_0" layoutX="442.0" layoutY="98.0" GridPane.rowIndex="4" />
+                <TextArea fx:id="cell_4_1" layoutX="12.0" layoutY="128.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextArea fx:id="cell_4_2" layoutX="98.0" layoutY="128.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <TextArea fx:id="cell_4_3" layoutX="184.0" layoutY="128.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                <TextArea fx:id="cell_4_4" layoutX="270.0" layoutY="128.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                <TextArea fx:id="cell_4_5" layoutX="356.0" layoutY="128.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
 
                 <!-- Fila 5 -->
-                <TextArea fx:id="cell_5_0" layoutX="442.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
-                <TextArea fx:id="cell_5_1" layoutX="12.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <TextArea fx:id="cell_5_2" layoutX="98.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                <TextArea fx:id="cell_5_3" layoutX="184.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                <TextArea fx:id="cell_5_4" layoutX="270.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                <TextArea fx:id="cell_5_5" layoutX="356.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                <TextArea fx:id="cell_5_0" layoutX="442.0" layoutY="128.0" GridPane.rowIndex="5" />
+                <TextArea fx:id="cell_5_1" layoutX="12.0" layoutY="158.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextArea fx:id="cell_5_2" layoutX="98.0" layoutY="158.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                <TextArea fx:id="cell_5_3" layoutX="184.0" layoutY="158.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                <TextArea fx:id="cell_5_4" layoutX="270.0" layoutY="158.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                <TextArea fx:id="cell_5_5" layoutX="356.0" layoutY="158.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
             </children>
         </GridPane>
         <HBox alignment="CENTER" prefHeight="39.0" prefWidth="600.0" style="-fx-spacing: 100; -fx-padding: 10;">
             <children>
-                <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartbutton" style="-fx-background-color: #4900a3;" text="Reiniciar" textFill="WHITE">
+                <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartbutton" styleClass="button-secondary" text="Reiniciar" textFill="WHITE">
                     <font>
                         <Font name="Berlin Sans FB" size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="ValidateButton" mnemonicParsing="false" onAction="#onVerify" style="-fx-background-color: #0055ff;" text="Validar" textFill="WHITE">
+                <Button fx:id="ValidateButton" mnemonicParsing="false" onAction="#onVerify" styleClass="button-primary" text="Validar" textFill="WHITE">
                     <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                     </font>
@@ -148,4 +120,7 @@
             </children>
         </HBox>
     </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </VBox>
